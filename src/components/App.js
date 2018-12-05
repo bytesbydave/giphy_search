@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import giphy from '../api/giphy';
 import GifList from './GifList';
+import '../css/App.css';
 
 
 class App extends React.Component {
@@ -22,9 +23,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ui container">
+      <div className="ui container top-contain">
         <SearchBar onFormSubmit={this.onTermSubmit} />
-        <GifList gifs={this.state.gifs} />
+        <div className="gif-list">
+          <GifList gifs={this.state.gifs} />
+        </div>
       </div>
     );
   }

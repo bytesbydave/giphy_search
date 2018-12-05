@@ -1,5 +1,6 @@
 import React from 'react';
 import GifItem from './GifItem';
+import '../css/GifList.css';
 
 const GifList = ({ gifs }) => {
   const renderedGif = gifs.map((gif) => {
@@ -8,7 +9,7 @@ const GifList = ({ gifs }) => {
     );
   });
   return(
-    <div>
+    <div className="gif-grid">
       {renderedGif}
     </div>
   );
