@@ -25,3 +25,9 @@ img {
 .hide-social-media-container {
   display: none;
 }
+
+@media (max-width: 991px) {
+  img {
+    padding: 5px;
+  }
+}
