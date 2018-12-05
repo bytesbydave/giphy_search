@@ -1,0 +1,27 @@
+img {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 30px;
+  position: relative;
+  z-index: -1;
+}
+
+.image-container {
+  position: relative;
+}
+
+.social-media-container {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 1
+}
+
+.hide-social-media-container {
+  display: none;
+}
