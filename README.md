@@ -22,8 +22,9 @@ npm install
 ```
 
 Change Giphy API
-```
+
 Get a Giphy API key from [here](https://developers.giphy.com/)
+```
 Replace process.env.REACT_APP_GIPHY_API_KEY with the API Key
 ```
 
