@@ -31,8 +31,9 @@ export const requestGiphys = (state = initialStateGiphys, action = {}) => {
     case REQUEST_GIPHY_SUCCESS:
       return { ...state, giphys: action.payload, isPending: false };
     case REQUEST_GIPHY_FAILED:
-      return { ...state, isPending: false, error: action.payload };
+      return { ...state, error: action.payload, isPending: false };
     default:
       return state;
   }
 };
+
