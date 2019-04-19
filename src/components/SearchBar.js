@@ -1,46 +1,47 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setSearchField, requestGiphys } from '../actions';
 
-class SearchBar extends React.Component {
+import { requestGiphys, setSearchField } from '../actions';
 
-  render() {
-    const { searchField, onInputChange, onFormSubmit } = this.props;
-    return (
-      <div className="ui segment">
-        <div className="ui form">
-          <div className="field">
-            <label>Search for a Gif!</label>
-            <input
-              type="text"
-              value={searchField}
-              onChange={onInputChange}
-              required
-            />
-          </div>   
+const SearchBar = ({ searchField, onSearchChange, onTermSubmit }) => {
+  return (
+    <div className="ui segment">
+      <div className="ui form">
+        <div className="field">
+          <label>Search for a Gif!</label>
+          <input
+            type="text"
+            value={searchField}
+            onChange={onSearchChange}
+            required
+          />
         </div>
+        <button
+          onClick={onTermSubmit}
+          value={searchField}
+          className="ui primary button"
+        >
+          Search!
+        </button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-// const SearchBar = ({ searchField, onInputChange, onFormSubmit }) => {
-//   return (
-//     <div className="ui segment">
-//       <form onSubmit={onFormSubmit} className="ui form">
-//         <div className="field">
-//           <label>Search for a Gif!</label>
-//           <input
-//             type="text"
-//             value={searchField}
-//             onChange={onInputChange}
-//             required
-//           />
-//         </div>
-//         <button className="ui primary button">Search!</button>
-//       </form>
-//     </div>
-//   );
-// };
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchGiphys.searchField
+  };
+};
 
-export default SearchBar;
+const mapDispatchToProps = dispatch => {
+  return {
+    onTermSubmit: event => dispatch(requestGiphys(event.target.value)),
+    onSearchChange: event => dispatch(setSearchField(event.target.value))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchBar);
