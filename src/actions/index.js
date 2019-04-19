@@ -4,12 +4,15 @@ import {
   REQUEST_GIPHY_SUCCESS,
   REQUEST_GIPHY_FAILED
 } from './types';
+
 import giphy from '../api/giphy';
 
-export const setSearchField = text => ({
-  type: CHANGE_SEARCH_FIELD,
-  payload: text
-});
+export const setSearchField = text => {
+  return {
+    type: CHANGE_SEARCH_FIELD,
+    payload: text
+  };
+};
 
 export const requestGiphys = term => async dispatch => {
   dispatch({ type: REQUEST_GIPHY_PENDING });
@@ -19,7 +22,7 @@ export const requestGiphys = term => async dispatch => {
         q: term
       }
     });
-    dispatch({ type: REQUEST_GIPHY_SUCCESS, payload: response.data });
+    dispatch({ type: REQUEST_GIPHY_SUCCESS, payload: response.data.data });
   } catch (err) {
     dispatch({ type: REQUEST_GIPHY_FAILED, payload: err });
   }
