@@ -1,5 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
+import { searchGiphys, requestGiphys } from './reducers';
+import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+import App from './containers/App';
+
+const logger = createLogger();
+const rootReducer = combineReducers({ searchGiphys, requestGiphys });
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunkMiddleware, logger)
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+registerServiceWorker();
