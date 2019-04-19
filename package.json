@@ -1,5 +1,5 @@
 {
-  "name": "yelp_business_search",
+  "name": "giphy-search",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
