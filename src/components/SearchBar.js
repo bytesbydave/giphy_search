@@ -1,35 +1,46 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setSearchField, requestGiphys } from '../actions';
 
 class SearchBar extends React.Component {
-  state = { term: '' };
-
-  onInputChange = (e) => {
-    this.setState({ term: e.target.value });
-  };
-
-  onFormSubmit = (e) => {
-    e.preventDefault();
-    this.props.onFormSubmit(this.state.term);
-  }
 
   render() {
-    return(
+    const { searchField, onInputChange, onFormSubmit } = this.props;
+    return (
       <div className="ui segment">
-        <form onSubmit={this.onFormSubmit} className="ui form">
+        <div className="ui form">
           <div className="field">
             <label>Search for a Gif!</label>
-            <input 
-              type="text" 
-              value={this.state.term}
-              onChange={this.onInputChange}
+            <input
+              type="text"
+              value={searchField}
+              onChange={onInputChange}
               required
             />
-          </div>
-          <button className="ui primary button">Search!</button>
-        </form>
+          </div>   
+        </div>
       </div>
     );
   }
 }
+
+// const SearchBar = ({ searchField, onInputChange, onFormSubmit }) => {
+//   return (
+//     <div className="ui segment">
+//       <form onSubmit={onFormSubmit} className="ui form">
+//         <div className="field">
+//           <label>Search for a Gif!</label>
+//           <input
+//             type="text"
+//             value={searchField}
+//             onChange={onInputChange}
+//             required
+//           />
+//         </div>
+//         <button className="ui primary button">Search!</button>
+//       </form>
+//     </div>
+//   );
+// };
 
 export default SearchBar;
