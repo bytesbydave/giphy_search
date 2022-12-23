@@ -4,7 +4,7 @@
 
 This app allows users to search for Gifs by entering a search term. This front-end project uses React to retrieve and display gifs using the Giphy API. Designs were done using Semantic UI and CSS Grid.
 
-View the live site [here](https://dvdlin214.github.io/giphy_search/)
+View the live site [here](https://bytesbydave.github.io/giphy_search/)
 
 ## Getting Started
 
